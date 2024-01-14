@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: frontend-1
+
+  labels:
+
+    app: guestbook
+
+    tier: frontend
+
+spec:
+  selector:
+    matchLabels:
+      type: front-end
+  # modify replicas according to your case
+
+  replicas: 5
+  
+
+
+  template:
+    metadata:
+     name: myapp-pod
+     labels:
+      app: myapp
+      type: front-end
+    spec:
+      containers:
+        - name: terraform
+          image: docker.io/alivelusai/terrakubectl
+          command: [ "/bin/sh" , "-c", "tail -f /dev/null" ]  
